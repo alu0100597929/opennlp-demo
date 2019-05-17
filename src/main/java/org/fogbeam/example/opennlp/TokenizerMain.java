@@ -38,7 +38,7 @@ public class TokenizerMain
 							+ " mentions \"three Mounts raised by the Indians over three of their Great Kings" 
 							+ " who were killed in the Wars.\"" );
 			*/
-                        String[] tokens = tokenizer.tokenize(readFile());
+                        String[] tokens = tokenizer.tokenize(readFile("demo_tokens/tokens.txt"));
                         
 			for( String token : tokens )
 			{
@@ -66,11 +66,11 @@ public class TokenizerMain
 		System.out.println( "\n-----\ndone" );
 	}
         
-        public static String readFile()
+        public static String readFile(String filename)
         {
             try
             {
-                InputStream is = new FileInputStream("demo_tokens/tokens.txt");
+                InputStream is = new FileInputStream(filename);
                 BufferedReader bf = new BufferedReader(new InputStreamReader(is));
 
                 String line = bf.readLine();
