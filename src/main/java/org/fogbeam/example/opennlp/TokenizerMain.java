@@ -2,15 +2,18 @@
 package org.fogbeam.example.opennlp;
 
 
-//import java.io.FileInputStream;
-//import java.io.IOException;
-//import java.io.InputStream;
 import java.io.*;
 
 
 import opennlp.tools.tokenize.Tokenizer;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
+
+/**
+ * 
+ * @author Juan Manuel Ramos Perez
+ * Modification with readFile() method
+ */
 
 
 public class TokenizerMain
@@ -22,7 +25,7 @@ public class TokenizerMain
 		// InputStream modelIn = new FileInputStream( "models/en-token.bin" );
 
 		
-		// the model we trained
+		// the model we trained             
 		InputStream modelIn = new FileInputStream( "models/en-token.model" );
 		
 		try
@@ -32,12 +35,10 @@ public class TokenizerMain
 			Tokenizer tokenizer = new TokenizerME(model);
 			
 				/* note what happens with the "three depending on which model you use */
-			/*
-                        String[] tokens = tokenizer.tokenize
-					(  "A ranger journeying with Oglethorpe, founder of the Georgia Colony, " 
-							+ " mentions \"three Mounts raised by the Indians over three of their Great Kings" 
-							+ " who were killed in the Wars.\"" );
-			*/
+			
+                         /**
+                          * call readFile method
+                          */
                         String[] tokens = tokenizer.tokenize(readFile("demo_tokens/tokens.txt"));
                         
 			for( String token : tokens )
@@ -66,6 +67,12 @@ public class TokenizerMain
 		System.out.println( "\n-----\ndone" );
 	}
         
+        /**
+         * readFile method
+         * @author Juan Manuel Ramos Perez
+         * @param filename
+         * @return tokens
+         */
         public static String readFile(String filename)
         {
             try
